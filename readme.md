@@ -19,7 +19,6 @@ The idea behind the website is the Avengers: every participant is a "hero" who a
   - Time Stone – Open Innovation
   - Soul Stone – Social Impact
 - The **"Which Avenger are you?"** section matches each hero to a team role (for example, Spider-Man = Frontend, Thor = Backend). When you click a hero, the colour of the whole website changes to match that hero.
-- The design uses a dark cinematic background with Marvel red and gold, comic-style dots, and bold Bebas Neue headings, like a movie poster.
 
 ---
 
@@ -64,17 +63,6 @@ The idea behind the website is the Avengers: every participant is a "hero" who a
 - **Icons:** [Font Awesome](https://fontawesome.com/)
 - **Inspiration:** Marvel movie posters, [Awwwards](https://www.awwwards.com/), [Dribbble](https://dribbble.com/)
 
-No copyrighted Marvel images are used. All visuals are made with CSS.
-
----
-
-## 🔮 Future Improvements
-
-- Connect the registration form to Google Sheets or a backend so the data gets saved
-- Add a speakers and mentors section
-- Add a gallery from previous events
-
----
 
 ## 👤 Made By
 
