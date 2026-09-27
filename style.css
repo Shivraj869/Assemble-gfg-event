@@ -1,0 +1,1017 @@
+/* ---------- basic setup ---------- */
+:root {
+    --red: #e62429;
+    --dark-red: #a0151a;
+    --gold: #f5c518;
+    --black: #0b0b0f;
+    --card: #16161d;
+    --grey: #a3a3ad;
+    --white: #f5f5f5;
+    --accent: #e62429; /* changes when you pick a hero */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+section {
+    padding: 100px 0;
+}
+
+.section-tag {
+    color: var(--accent);
+    letter-spacing: 3px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 60px;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin: 10px 0 20px;
+}
+
+.section-title span {
+    color: var(--accent);
+}
+
+.section-desc {
+    color: var(--grey);
+    max-width: 600px;
+    margin-bottom: 50px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-red {
+    background: var(--red);
+    color: white;
+}
+
+.btn-red:hover {
+    background: var(--dark-red);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(230, 36, 41, 0.4);
+}
+
+.btn-outline {
+    border: 2px solid white;
+    color: white;
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: black;
+}
+
+/* ---------- navbar ---------- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 20px 0;
+    transition: 0.3s;
+}
+
+/* added with js when user scrolls */
+.navbar.scrolled {
+    background: rgba(11, 11, 15, 0.95);
+    padding: 12px 0;
+    border-bottom: 1px solid #222;
+}
+
+.nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    display: flex;
+}
+
+.logo .white-box {
+    background: white;
+    color: var(--red);
+    padding: 0 8px;
+}
+
+.logo .red-box {
+    background: var(--red);
+    padding: 0 8px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links a {
+    font-size: 15px;
+    color: #ddd;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+.nav-links .nav-btn {
+    background: var(--red);
+    color: white;
+    padding: 8px 18px;
+}
+
+.nav-links .nav-btn:hover {
+    background: var(--dark-red);
+    color: white;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* ---------- hero ---------- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    background:
+        radial-gradient(circle at 50% 60%, rgba(230, 36, 41, 0.35), transparent 60%),
+        var(--black);
+    overflow: hidden;
+}
+
+/* comic book dots in the background */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 8px 8px;
+}
+
+/* big spinning ring behind the title */
+.hero .ring {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border: 2px dashed rgba(245, 197, 24, 0.3);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    margin-left: -300px;
+    margin-top: -300px;
+    animation: spin 40s linear infinite;
+}
+
+.hero .ring.small {
+    width: 450px;
+    height: 450px;
+    margin-left: -225px;
+    margin-top: -225px;
+    border-color: rgba(230, 36, 41, 0.35);
+    animation-direction: reverse;
+    animation-duration: 25s;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding-top: 60px;
+}
+
+.hero-small {
+    display: inline-block;
+    border: 1px solid #444;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ccc;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 170px;
+    line-height: 1;
+    margin: 15px 0 5px;
+    background: linear-gradient(to bottom, #ffffff 30%, var(--red));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: fadeUp 1s ease;
+}
+
+.hero p.tagline {
+    font-size: 20px;
+    color: var(--grey);
+}
+
+.hero p.tagline b {
+    color: white;
+}
+
+.event-info {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 25px 0;
+    font-size: 15px;
+}
+
+.event-info i {
+    color: var(--gold);
+    margin-right: 6px;
+}
+
+/* countdown boxes */
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0 40px;
+}
+
+.time-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #333;
+    border-top: 3px solid var(--red);
+    width: 95px;
+    padding: 12px 0;
+}
+
+.time-box h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px;
+    line-height: 1;
+}
+
+.time-box p {
+    font-size: 12px;
+    color: var(--grey);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- red strip ---------- */
+.strip {
+    background: var(--red);
+    padding: 15px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transform: rotate(-2deg);
+    margin-top: -30px;
+    position: relative;
+    z-index: 5;
+}
+
+.strip-text {
+    display: inline-block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    letter-spacing: 2px;
+    animation: slide 25s linear infinite;
+}
+
+@keyframes slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* ---------- about ---------- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-text p {
+    color: var(--grey);
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.comic-bubble {
+    display: inline-block;
+    background: white;
+    color: black;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    padding: 12px 25px;
+    border: 3px solid black;
+    box-shadow: 6px 6px 0 var(--red);
+    transform: rotate(-3deg);
+    margin-top: 20px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.stat-card {
+    background: var(--card);
+    padding: 30px;
+    border-left: 4px solid var(--accent);
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 55px;
+    line-height: 1;
+}
+
+.stat-card p {
+    color: var(--grey);
+    font-size: 14px;
+}
+
+/* ---------- tracks (infinity stones) ---------- */
+.tracks {
+    background: #0f0f14;
+}
+
+.track-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.track-card {
+    background: var(--card);
+    padding: 35px 30px;
+    border: 1px solid #25252e;
+    position: relative;
+    transition: 0.3s;
+}
+
+.track-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--stone);
+    box-shadow: 0 15px 35px -15px var(--stone);
+}
+
+.stone {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, white, var(--stone) 45%, black 130%);
+    box-shadow: 0 0 25px var(--stone);
+    margin-bottom: 25px;
+}
+
+.track-card .number {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 50px;
+    color: #2a2a33;
+}
+
+.track-card h4 {
+    font-size: 13px;
+    color: var(--stone);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.track-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px;
+    letter-spacing: 1px;
+    margin: 5px 0 10px;
+}
+
+.track-card p {
+    color: var(--grey);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* ---------- choose your hero ---------- */
+.hero-picker {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.hero-option {
+    background: var(--card);
+    border: 2px solid #25252e;
+    padding: 20px 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero-option i {
+    font-size: 28px;
+    color: var(--hero-color);
+    margin-bottom: 10px;
+}
+
+.hero-option p {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.hero-option:hover {
+    transform: translateY(-4px);
+}
+
+.hero-option.active {
+    border-color: var(--hero-color);
+    background: #1e1e27;
+}
+
+.hero-details {
+    background: var(--card);
+    border: 1px solid #25252e;
+    border-left: 5px solid var(--accent);
+    padding: 40px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero-icon {
+    min-width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    background: var(--accent);
+    box-shadow: 0 0 50px var(--accent);
+    transition: 0.4s;
+}
+
+.hero-details h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 1px;
+}
+
+.hero-details h5 {
+    color: var(--accent);
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.hero-details p {
+    color: var(--grey);
+    line-height: 1.8;
+}
+
+/* ---------- schedule ---------- */
+.schedule {
+    background: #0f0f14;
+}
+
+.day-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.day-tab {
+    padding: 10px 25px;
+    background: var(--card);
+    border: 1px solid #333;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.day-tab.active {
+    background: var(--red);
+    border-color: var(--red);
+}
+
+.day-content {
+    display: none;
+}
+
+.day-content.active {
+    display: block;
+}
+
+.event-row {
+    display: flex;
+    gap: 30px;
+    padding: 25px;
+    border-bottom: 1px solid #25252e;
+    transition: 0.3s;
+}
+
+.event-row:hover {
+    background: var(--card);
+    padding-left: 35px;
+}
+
+.event-row .time {
+    min-width: 110px;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.event-row h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+.event-row p {
+    color: var(--grey);
+    font-size: 14px;
+}
+
+/* ---------- prizes ---------- */
+.prize-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    align-items: end;
+}
+
+.prize-card {
+    background: var(--card);
+    text-align: center;
+    padding: 40px 25px;
+    border-top: 4px solid var(--prize);
+    transition: 0.3s;
+}
+
+.prize-card:hover {
+    transform: translateY(-8px);
+}
+
+.prize-card.first {
+    padding: 60px 25px;
+    background: linear-gradient(to bottom, rgba(245, 197, 24, 0.12), var(--card));
+}
+
+.prize-card i {
+    font-size: 45px;
+    color: var(--prize);
+    margin-bottom: 15px;
+}
+
+.prize-card h4 {
+    color: var(--grey);
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.prize-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 55px;
+    color: var(--prize);
+}
+
+.prize-card p {
+    color: var(--grey);
+    font-size: 14px;
+}
+
+/* ---------- faq ---------- */
+.faq {
+    background: #0f0f14;
+}
+
+.faq-item {
+    border-bottom: 1px solid #25252e;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 0;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.faq-question i {
+    transition: 0.3s;
+    color: var(--accent);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    color: var(--grey);
+    transition: max-height 0.4s ease;
+}
+
+.faq-answer p {
+    padding-bottom: 22px;
+}
+
+.faq-item.open .faq-answer {
+    max-height: 200px;
+}
+
+.faq-item.open .faq-question i {
+    transform: rotate(45deg);
+}
+
+/* ---------- register ---------- */
+.register-box {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    background: var(--card);
+    padding: 50px;
+    border: 1px solid #25252e;
+    border-top: 4px solid var(--red);
+}
+
+.register-left ul {
+    list-style: none;
+    margin-top: 25px;
+}
+
+.register-left li {
+    margin-bottom: 14px;
+    color: var(--grey);
+}
+
+.register-left li i {
+    color: var(--red);
+    margin-right: 10px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    color: var(--grey);
+    margin-bottom: 6px;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 13px 15px;
+    background: var(--black);
+    border: 1px solid #333;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    outline: none;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: var(--red);
+}
+
+.error {
+    color: #ff5a5a;
+    font-size: 12px;
+    margin-top: 4px;
+    display: none;
+}
+
+.input-group.invalid input,
+.input-group.invalid select {
+    border-color: #ff5a5a;
+}
+
+.input-group.invalid .error {
+    display: block;
+}
+
+#registerForm .btn {
+    width: 100%;
+}
+
+.success-msg {
+    display: none;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.success-msg i {
+    font-size: 60px;
+    color: #2ecc71;
+    margin-bottom: 15px;
+}
+
+.success-msg h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+}
+
+.success-msg p {
+    color: var(--grey);
+}
+
+/* ---------- footer ---------- */
+footer {
+    border-top: 1px solid #222;
+    padding: 60px 0 25px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+footer p,
+footer li {
+    color: var(--grey);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+footer h4 {
+    margin-bottom: 15px;
+    color: var(--accent);
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer ul a:hover {
+    color: white;
+}
+
+.socials {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.socials a {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.socials a:hover {
+    background: var(--red);
+    border-color: var(--red);
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #222;
+    padding-top: 25px;
+    font-size: 13px;
+}
+
+/* ---------- scroll animation ---------- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---------- register button box ---------- */
+.register-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--black);
+    border: 1px dashed #333;
+    padding: 50px 30px;
+}
+
+.register-right .big-icon {
+    font-size: 60px;
+    color: var(--red);
+    margin-bottom: 20px;
+    text-shadow: 0 0 30px rgba(230, 36, 41, 0.6);
+}
+
+.register-right h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    letter-spacing: 1px;
+}
+
+.register-right p {
+    color: var(--grey);
+    margin: 10px 0 25px;
+}
+
+.register-right .form-note {
+    font-size: 12px;
+    margin: 15px 0 0;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+    .track-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-picker {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .about-grid,
+    .register-box {
+        grid-template-columns: 1fr;
+    }
+
+    .prize-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        height: 100vh;
+        background: #111;
+        flex-direction: column;
+        justify-content: center;
+        transition: 0.4s;
+    }
+
+    .nav-links.open {
+        right: 0;
+    }
+
+    .nav-links a {
+        font-size: 20px;
+    }
+
+    .hero h1 {
+        font-size: 90px;
+    }
+
+    .hero .ring {
+        width: 380px;
+        height: 380px;
+        margin-left: -190px;
+        margin-top: -190px;
+    }
+
+    .hero .ring.small {
+        width: 280px;
+        height: 280px;
+        margin-left: -140px;
+        margin-top: -140px;
+    }
+
+    .time-box {
+        width: 72px;
+    }
+
+    .time-box h3 {
+        font-size: 34px;
+    }
+
+    .section-title {
+        font-size: 44px;
+    }
+
+    .track-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-details {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .event-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .register-box {
+        padding: 30px 20px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
